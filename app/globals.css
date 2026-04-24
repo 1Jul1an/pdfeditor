@@ -456,6 +456,338 @@ a {
   background: var(--success);
 }
 
+.landing-page {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: clamp(1.1rem, 1.8vw, 1.8rem);
+  padding: clamp(1rem, 3vw, 3rem);
+  overflow: auto;
+}
+
+.landing-hero {
+  width: min(100%, 72rem);
+  padding: clamp(1.3rem, 2.4vw, 2.25rem);
+  border: 1px solid var(--border);
+  border-radius: 1.55rem;
+  background: rgba(14, 17, 25, 0.72);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
+}
+
+.landing-hero h1 {
+  margin: 0;
+  font-size: clamp(3rem, 8vw, 7rem);
+  line-height: 0.9;
+  letter-spacing: -0.08em;
+}
+
+.landing-hero p:not(.eyebrow) {
+  max-width: 43rem;
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.25vw, 1.2rem);
+  line-height: 1.65;
+}
+
+.choice-grid {
+  width: min(100%, 72rem);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1rem, 1.5vw, 1.4rem);
+}
+
+.choice-card {
+  min-height: clamp(15rem, 25vh, 21rem);
+  display: grid;
+  align-content: space-between;
+  gap: 1rem;
+  padding: clamp(1.2rem, 2vw, 1.8rem);
+  border: 1px solid var(--border);
+  border-radius: 1.35rem;
+  background:
+    linear-gradient(180deg, rgba(140, 180, 255, 0.1), rgba(255, 255, 255, 0.025)),
+    rgba(21, 25, 34, 0.84);
+  color: var(--text);
+  text-decoration: none;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(18px);
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.choice-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(140, 180, 255, 0.42);
+  background:
+    linear-gradient(180deg, rgba(140, 180, 255, 0.16), rgba(255, 255, 255, 0.035)),
+    rgba(21, 25, 34, 0.9);
+}
+
+.choice-kicker,
+.choice-link {
+  color: var(--accent);
+  font-weight: 850;
+}
+
+.choice-kicker {
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+}
+
+.choice-card h2 {
+  margin: 0;
+  font-size: clamp(2rem, 3vw, 3rem);
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+}
+
+.choice-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.choice-link {
+  justify-self: start;
+}
+
+.github-island {
+  position: relative;
+  width: min(100%, 72rem);
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: clamp(1rem, 1.8vw, 1.5rem);
+  padding: clamp(1rem, 1.5vw, 1.35rem);
+  border: 1px solid rgba(140, 180, 255, 0.22);
+  border-radius: 1.35rem;
+  background:
+    radial-gradient(circle at 8% 0%, rgba(140, 180, 255, 0.2), transparent 16rem),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.028)),
+    rgba(21, 25, 34, 0.78);
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(18px);
+  overflow: hidden;
+}
+
+.github-island::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 35%);
+}
+
+.github-orb {
+  position: relative;
+  z-index: 1;
+  width: clamp(4rem, 6vw, 5.2rem);
+  height: clamp(4rem, 6vw, 5.2rem);
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(140, 180, 255, 0.28);
+  border-radius: 1.2rem;
+  background:
+    radial-gradient(circle at 35% 24%, rgba(255, 255, 255, 0.18), transparent 1.9rem),
+    rgba(255, 255, 255, 0.055);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 18px 45px rgba(0, 0, 0, 0.2);
+}
+
+.github-icon {
+  width: clamp(2.2rem, 3.5vw, 3rem);
+  height: clamp(2.2rem, 3.5vw, 3rem);
+  flex: 0 0 auto;
+  color: var(--text);
+}
+
+.github-copy {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+}
+
+.github-kicker {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.github-island h2 {
+  margin: 0;
+  font-size: clamp(1.2rem, 1.7vw, 1.55rem);
+  letter-spacing: -0.045em;
+}
+
+.github-island p {
+  max-width: 33rem;
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.github-actions {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(9rem, 1fr));
+  gap: 0.7rem;
+}
+
+.github-actions a {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  padding: 0.85rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.045);
+  color: var(--text);
+  text-decoration: none;
+  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+
+.github-actions a:hover {
+  transform: translateY(-2px);
+  border-color: rgba(140, 180, 255, 0.42);
+  background: rgba(140, 180, 255, 0.09);
+}
+
+.github-actions span {
+  min-width: 0;
+  display: grid;
+  gap: 0.16rem;
+}
+
+.github-actions strong,
+.github-actions small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.github-actions strong {
+  font-size: 0.95rem;
+}
+
+.github-actions small {
+  color: var(--subtle);
+}
+
+.external-icon {
+  width: 1.1rem;
+  height: 1.1rem;
+  flex: 0 0 auto;
+  color: var(--accent);
+}
+
+.back-link {
+  width: fit-content;
+  padding: 0.55rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 800;
+}
+
+.back-link:hover {
+  color: var(--text);
+}
+
+.soft-alert {
+  color: var(--warning);
+  background: rgba(255, 212, 121, 0.09);
+  border-color: rgba(255, 212, 121, 0.32);
+}
+
+.page-editor-panel {
+  padding-right: clamp(0.75rem, 1vw, 1rem);
+}
+
+.page-list li,
+.preview-page-list li {
+  grid-template-columns: 4.25rem auto minmax(0, 1fr) minmax(8rem, auto) auto;
+  align-items: stretch;
+}
+
+.preview-page-list li {
+  padding: 0.85rem;
+}
+
+.preview-page-list .rank,
+.preview-page-list .pdf-meta,
+.preview-page-list .page-count,
+.preview-page-list .row-actions {
+  align-self: center;
+}
+
+.page-preview {
+  position: relative;
+  width: 8.75rem;
+  min-height: 10.75rem;
+  display: grid;
+  place-items: center;
+  align-self: stretch;
+  padding: 0.45rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.95rem;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.035)),
+    rgba(10, 13, 18, 0.76);
+  overflow: hidden;
+}
+
+.page-preview canvas,
+.page-preview-frame {
+  width: 100%;
+  max-width: 100%;
+  max-height: 13rem;
+  border: 0;
+  border-radius: 0.45rem;
+  background: #fff;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.24);
+}
+
+.page-preview canvas {
+  height: auto;
+}
+
+.page-preview-frame {
+  min-height: 13rem;
+}
+
+.page-preview span {
+  position: absolute;
+  inset: auto 0.55rem 0.55rem;
+  padding: 0.28rem 0.45rem;
+  border-radius: 999px;
+  background: rgba(11, 13, 18, 0.78);
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 750;
+  text-align: center;
+  backdrop-filter: blur(12px);
+}
+
+.page-preview.ready span {
+  display: none;
+}
+
+.page-actions button:last-child {
+  color: var(--danger);
+  border-color: rgba(255, 133, 133, 0.32);
+}
+
 @media (max-width: 1100px) {
   body {
     overflow: auto;
@@ -476,9 +808,15 @@ a {
     grid-template-columns: 1fr;
   }
 
-  .workspace-grid {
+  .workspace-grid,
+  .choice-grid,
+  .github-island {
     grid-template-columns: 1fr;
     overflow: visible;
+  }
+
+  .github-actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .control-column {
@@ -504,8 +842,21 @@ a {
     flex-direction: column;
   }
 
-  .pdf-list li {
+  .pdf-list li,
+  .page-list li,
+  .preview-page-list li {
     grid-template-columns: 3rem minmax(0, 1fr);
+  }
+
+  .github-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .page-preview {
+    grid-column: 2;
+    width: min(100%, 11rem);
+    min-height: 12rem;
+    justify-self: start;
   }
 
   .page-count,
