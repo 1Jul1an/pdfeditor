@@ -90,6 +90,7 @@ function PagePreview({
       setPreviewState("loading");
 
       try {
+        if (!documentProxy) return;
         const page = await documentProxy.getPage(pageNumber);
         if (cancelled) return;
 
@@ -140,7 +141,7 @@ function PagePreview({
         <iframe
           className="page-preview-frame"
           title={`Preview of page ${pageNumber}`}
-          src={`${fallbackUrl}#page=${pageNumber}&toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
+          src={`${fallbackUrl || ""}#page=${pageNumber}&toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
         />
       ) : (
         <canvas ref={canvasRef} aria-label={`Preview of page ${pageNumber}`} />
@@ -187,7 +188,11 @@ export default function EditPage() {
       return;
     }
 
-    const blob = new Blob([pdfBytes], { type: "application/pdf" });
+    const arrayBuffer = pdfBytes.buffer.slice(
+      pdfBytes.byteOffset,
+      pdfBytes.byteOffset + pdfBytes.byteLength
+    ) as ArrayBuffer;
+    const blob = new Blob([arrayBuffer], { type: "application/pdf" });
     const url = URL.createObjectURL(blob);
     setPreviewFileUrl(url);
 
@@ -213,7 +218,8 @@ export default function EditPage() {
       try {
         const pdfjs = (await import("pdfjs-dist")) as any;
         pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
-        loadingTask = pdfjs.getDocument({ data: new Uint8Array(pdfBytes) });
+        loadingTask = pdfjs.getDocument({ data: pdfBytes });
+        if (!loadingTask) throw new Error("Failed to initialize PDF loading");
         loadedDocument = await loadingTask.promise;
 
         if (cancelled) {
@@ -362,11 +368,11 @@ export default function EditPage() {
       copiedPages.forEach((page) => edited.addPage(page));
 
       const editedBytes = await edited.save();
-      const editedBuffer = editedBytes.buffer.slice(
+      const arrayBuffer = editedBytes.buffer.slice(
         editedBytes.byteOffset,
         editedBytes.byteOffset + editedBytes.byteLength
       ) as ArrayBuffer;
-      const blob = new Blob([editedBuffer], { type: "application/pdf" });
+      const blob = new Blob([arrayBuffer], { type: "application/pdf" });
       const url = URL.createObjectURL(blob);
 
       setDownloadUrl(url);
