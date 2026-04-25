@@ -1,2 +1,6 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+public/pdf.worker.min.js linguist-vendored
+public/pdf.worker.min.mjs linguist-vendored
+public/**/*.js linguist-vendored
+public/**/*.mjs linguist-vendored
